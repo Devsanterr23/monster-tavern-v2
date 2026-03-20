@@ -6,34 +6,26 @@ using UnityEngine.EventSystems;
 
 namespace LayerLab.ArtMaker
 {
-    /// <summary>
-    /// 플레이어 캐릭터 컨트롤러
-    /// Player character controller
-    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
-        /// <summary>
-        /// 플레이어 상태 열거형
-        /// Player state enumeration
-        /// </summary>
         public enum EPlayerState
         {
             Idle,
             Run
         }
 
-        public EPlayerState PlayerState { get; set; } // 현재 플레이어 상태 / Current player state
+        public EPlayerState PlayerState { get; set; }
 
         public static Player Instance { get; private set; }
-        [field: SerializeField] public PartsManager PartsManager { get; private set; } // 부품 매니저 참조 / Parts manager reference
-
-        [SerializeField] private float moveSpeed = 5f; // 이동 속도 / Move speed
-        [SerializeField] private float stoppingDistance = 0.1f; // 정지 거리 / Stopping distance
-        [SerializeField] private float rotationSpeed = 10f; // 회전 속도 / Rotation speed
+        [field: SerializeField] public PartsManager PartsManager { get; private set; }
+        
+        [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float stoppingDistance = 0.1f;
+        [SerializeField] private float rotationSpeed = 10f;
 
         private bool InDistance => InputDistance() <= stoppingDistance;
-        [SpineEvent] private readonly string _footStepEventName = "Step"; // 발소리 이벤트 이름 / Footstep event name
+        [SpineEvent] private readonly string _footStepEventName = "Step";
         private Vector3 _targetPosition;
         private Vector3 _firstPosition;
         private Vector2 _moveDirection;
@@ -44,7 +36,7 @@ namespace LayerLab.ArtMaker
 
         private Collider2D _characterCollider;
 
-        [SerializeField] private bool autoInit; // 자동 초기화 활성화 여부 / Whether auto initialization is enabled
+        [SerializeField] private bool autoInit;
         
         private void Awake()
         {

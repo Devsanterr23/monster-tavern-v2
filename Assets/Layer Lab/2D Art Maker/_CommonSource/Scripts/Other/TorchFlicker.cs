@@ -2,10 +2,6 @@ using UnityEngine;
 
 namespace LayerLab.ArtMaker
 {
-    /// <summary>
-    /// 횃불 조명의 깜빡임과 흔들림 효과를 처리하는 컴포넌트
-    /// Component that handles torch light flickering and wobble effects
-    /// </summary>
     public class TorchFlicker : MonoBehaviour
     {
         public Light torchLight;
